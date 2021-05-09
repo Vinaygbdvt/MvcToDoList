@@ -1,0 +1,247 @@
+Index: gradle/wrapper/gradle-wrapper.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#Mon Dec 28 10:00:20 PST 2015\r\ndistributionBase=GRADLE_USER_HOME\r\ndistributionPath=wrapper/dists\r\nzipStoreBase=GRADLE_USER_HOME\r\nzipStorePath=wrapper/dists\r\ndistributionUrl=https\\://services.gradle.org/distributions/gradle-2.14.1-all.zip\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>windows-1252
+===================================================================
+--- gradle/wrapper/gradle-wrapper.properties	(revision 585e45679fcbe728895baad4bf2be1840129cd08)
++++ gradle/wrapper/gradle-wrapper.properties	(date 1620428838136)
+@@ -3,4 +3,4 @@
+ distributionPath=wrapper/dists
+ zipStoreBase=GRADLE_USER_HOME
+ zipStorePath=wrapper/dists
+-distributionUrl=https\://services.gradle.org/distributions/gradle-2.14.1-all.zip
++distributionUrl=https\://services.gradle.org/distributions/gradle-4.6-all.zip
+Index: app/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>apply plugin: 'com.android.application'\r\n\r\nandroid {\r\n    compileSdkVersion 25\r\n    buildToolsVersion \"25.0.2\"\r\n    defaultConfig {\r\n        applicationId \"todolist.youtube.com.codetutor\"\r\n        minSdkVersion 16\r\n        targetSdkVersion 25\r\n        versionCode 1\r\n        versionName \"1.0\"\r\n        testInstrumentationRunner \"android.support.test.runner.AndroidJUnitRunner\"\r\n    }\r\n    buildTypes {\r\n        release {\r\n            minifyEnabled false\r\n            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'\r\n        }\r\n    }\r\n}\r\n\r\ndependencies {\r\n    compile fileTree(dir: 'libs', include: ['*.jar'])\r\n    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {\r\n        exclude group: 'com.android.support', module: 'support-annotations'\r\n    })\r\n    compile 'com.android.support:appcompat-v7:25.2.0'\r\n    testCompile 'junit:junit:4.12'\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/build.gradle	(revision 585e45679fcbe728895baad4bf2be1840129cd08)
++++ app/build.gradle	(date 1620430146514)
+@@ -1,12 +1,12 @@
+ apply plugin: 'com.android.application'
+ 
+ android {
+-    compileSdkVersion 25
+-    buildToolsVersion "25.0.2"
++    compileSdkVersion 28
++    //buildToolsVersion "25.0.2"
+     defaultConfig {
+         applicationId "todolist.youtube.com.codetutor"
+         minSdkVersion 16
+-        targetSdkVersion 25
++        targetSdkVersion 28
+         versionCode 1
+         versionName "1.0"
+         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+@@ -20,10 +20,11 @@
+ }
+ 
+ dependencies {
+-    compile fileTree(dir: 'libs', include: ['*.jar'])
+-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+-        exclude group: 'com.android.support', module: 'support-annotations'
+-    })
+-    compile 'com.android.support:appcompat-v7:25.2.0'
+-    testCompile 'junit:junit:4.12'
++    implementation fileTree(dir: 'libs', include: ['*.jar'])
++    implementation 'com.android.support:appcompat-v7:28.0.0'
++    implementation "com.android.support:support-compat:28.0.0"
++    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
++    testImplementation 'junit:junit:4.12'
++    androidTestImplementation 'com.android.support.test:runner:1.0.2'
++    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+ }
+Index: build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>// Top-level build file where you can add configuration options common to all sub-projects/modules.\r\n\r\nbuildscript {\r\n    repositories {\r\n        jcenter()\r\n    }\r\n    dependencies {\r\n        classpath 'com.android.tools.build:gradle:2.2.3'\r\n\r\n        // NOTE: Do not place your application dependencies here; they belong\r\n        // in the individual module build.gradle files\r\n    }\r\n}\r\n\r\nallprojects {\r\n    repositories {\r\n        jcenter()\r\n    }\r\n}\r\n\r\ntask clean(type: Delete) {\r\n    delete rootProject.buildDir\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- build.gradle	(revision 585e45679fcbe728895baad4bf2be1840129cd08)
++++ build.gradle	(date 1620429043913)
+@@ -1,11 +1,18 @@
+ // Top-level build file where you can add configuration options common to all sub-projects/modules.
+ 
+ buildscript {
++
+     repositories {
++     //   google()
+         jcenter()
++        maven {
++            url 'https://maven.google.com/'
++            name 'Google'
++        }
+     }
+     dependencies {
+-        classpath 'com.android.tools.build:gradle:2.2.3'
++        classpath 'com.android.tools.build:gradle:3.2.1'
++
+ 
+         // NOTE: Do not place your application dependencies here; they belong
+         // in the individual module build.gradle files
+@@ -14,7 +21,12 @@
+ 
+ allprojects {
+     repositories {
++     //   google()
+         jcenter()
++        maven {
++            url 'https://maven.google.com/'
++            name 'Google'
++        }
+     }
+ }
+ 
+Index: .idea/gradle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"GradleSettings\">\r\n    <option name=\"linkedExternalProjectsSettings\">\r\n      <GradleProjectSettings>\r\n        <option name=\"distributionType\" value=\"LOCAL\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"gradleHome\" value=\"$APPLICATION_HOME_DIR$/gradle/gradle-2.14.1\" />\r\n        <option name=\"modules\">\r\n          <set>\r\n            <option value=\"$PROJECT_DIR$\" />\r\n            <option value=\"$PROJECT_DIR$/app\" />\r\n          </set>\r\n        </option>\r\n        <option name=\"resolveModulePerSourceSet\" value=\"false\" />\r\n      </GradleProjectSettings>\r\n    </option>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/gradle.xml	(revision 585e45679fcbe728895baad4bf2be1840129cd08)
++++ .idea/gradle.xml	(date 1620427511532)
+@@ -1,8 +1,10 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
++  <component name="GradleMigrationSettings" migrationVersion="1" />
+   <component name="GradleSettings">
+     <option name="linkedExternalProjectsSettings">
+       <GradleProjectSettings>
++        <option name="testRunner" value="PLATFORM" />
+         <option name="distributionType" value="LOCAL" />
+         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+         <option name="gradleHome" value="$APPLICATION_HOME_DIR$/gradle/gradle-2.14.1" />
+@@ -13,6 +15,7 @@
+           </set>
+         </option>
+         <option name="resolveModulePerSourceSet" value="false" />
++        <option name="useQualifiedModuleNames" value="true" />
+       </GradleProjectSettings>
+     </option>
+   </component>
+Index: .idea/jarRepositories.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/jarRepositories.xml	(date 1620429306370)
++++ .idea/jarRepositories.xml	(date 1620429306370)
+@@ -0,0 +1,40 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="RemoteRepositoriesConfiguration">
++    <remote-repository>
++      <option name="id" value="central" />
++      <option name="name" value="Maven Central repository" />
++      <option name="url" value="https://repo1.maven.org/maven2" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="jboss.community" />
++      <option name="name" value="JBoss Community repository" />
++      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="Google" />
++      <option name="name" value="Google" />
++      <option name="url" value="https://maven.google.com/" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="BintrayJCenter" />
++      <option name="name" value="BintrayJCenter" />
++      <option name="url" value="https://jcenter.bintray.com/" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="D:\software\VinayAndoidSDKInstallation\extras\m2repository" />
++      <option name="name" value="D:\software\VinayAndoidSDKInstallation\extras\m2repository" />
++      <option name="url" value="file:/D:/software/VinayAndoidSDKInstallation/extras/m2repository/" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="D:\software\VinayAndoidSDKInstallation\extras\android\m2repository" />
++      <option name="name" value="D:\software\VinayAndoidSDKInstallation\extras\android\m2repository" />
++      <option name="url" value="file:/D:/software/VinayAndoidSDKInstallation/extras/android/m2repository/" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="D:\software\VinayAndoidSDKInstallation\extras\google\m2repository" />
++      <option name="name" value="D:\software\VinayAndoidSDKInstallation\extras\google\m2repository" />
++      <option name="url" value="file:/D:/software/VinayAndoidSDKInstallation/extras/google/m2repository/" />
++    </remote-repository>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"CompilerConfiguration\">\r\n    <resourceExtensions />\r\n    <wildcardResourcePatterns>\r\n      <entry name=\"!?*.java\" />\r\n      <entry name=\"!?*.form\" />\r\n      <entry name=\"!?*.class\" />\r\n      <entry name=\"!?*.groovy\" />\r\n      <entry name=\"!?*.scala\" />\r\n      <entry name=\"!?*.flex\" />\r\n      <entry name=\"!?*.kt\" />\r\n      <entry name=\"!?*.clj\" />\r\n      <entry name=\"!?*.aj\" />\r\n    </wildcardResourcePatterns>\r\n    <annotationProcessing>\r\n      <profile default=\"true\" name=\"Default\" enabled=\"false\">\r\n        <processorPath useClasspath=\"true\" />\r\n      </profile>\r\n    </annotationProcessing>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/compiler.xml	(revision 585e45679fcbe728895baad4bf2be1840129cd08)
++++ .idea/compiler.xml	(date 1620429277294)
+@@ -1,22 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="CompilerConfiguration">
+-    <resourceExtensions />
+-    <wildcardResourcePatterns>
+-      <entry name="!?*.java" />
+-      <entry name="!?*.form" />
+-      <entry name="!?*.class" />
+-      <entry name="!?*.groovy" />
+-      <entry name="!?*.scala" />
+-      <entry name="!?*.flex" />
+-      <entry name="!?*.kt" />
+-      <entry name="!?*.clj" />
+-      <entry name="!?*.aj" />
+-    </wildcardResourcePatterns>
+-    <annotationProcessing>
+-      <profile default="true" name="Default" enabled="false">
+-        <processorPath useClasspath="true" />
+-      </profile>
+-    </annotationProcessing>
++    <bytecodeTargetLevel target="1.8" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/vcs.xml	(date 1620427511481)
++++ .idea/vcs.xml	(date 1620427511481)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ProjectModuleManager\">\r\n    <modules>\r\n      <module fileurl=\"file://$PROJECT_DIR$/DBDemoToDoList.iml\" filepath=\"$PROJECT_DIR$/DBDemoToDoList.iml\" />\r\n      <module fileurl=\"file://$PROJECT_DIR$/app/app.iml\" filepath=\"$PROJECT_DIR$/app/app.iml\" />\r\n    </modules>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/modules.xml	(revision 585e45679fcbe728895baad4bf2be1840129cd08)
++++ .idea/modules.xml	(date 1620429306334)
+@@ -2,8 +2,8 @@
+ <project version="4">
+   <component name="ProjectModuleManager">
+     <modules>
+-      <module fileurl="file://$PROJECT_DIR$/DBDemoToDoList.iml" filepath="$PROJECT_DIR$/DBDemoToDoList.iml" />
+-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
++      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MVC_impl_ct.iml" filepath="$PROJECT_DIR$/.idea/modules/MVC_impl_ct.iml" />
++      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/MVC_impl_ct.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/MVC_impl_ct.app.iml" />
+     </modules>
+   </component>
+ </project>
+\ No newline at end of file

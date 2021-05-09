@@ -18,39 +18,30 @@ import todolist.youtube.com.codetutor.model.bean.ToDo;
 import todolist.youtube.com.codetutor.model.MCVModelImplementor;
 
 public class MainActivityViewImplementor implements MVCMainActivityView {
-
     View rootView;
-
     MVCController mvcController;
-
     private MCVModelImplementor mvcModel;
-
-
     private EditText editTextNewToDoString, editTextToDoId, editTextNewToDo, editTextPlace;
     private TextView textViewToDos;
     private Button buttonAddToDo, buttonRemoveToDo, buttonModifyToDo;
 
-    public MainActivityViewImplementor (Context context, ViewGroup continer){
-        rootView = LayoutInflater.from(context).inflate(R.layout.activity_main,continer);
+    public MainActivityViewImplementor(Context context, ViewGroup continer) {
+        rootView = LayoutInflater.from(context).inflate(R.layout.activity_main, continer);
         mvcModel = new MCVModelImplementor(MyApplication.getToDoListDBAdapter());
-
         mvcController = new MVCController(mvcModel, this);
     }
 
-
     @Override
     public void initViews() {
-        editTextNewToDoString=(EditText)rootView.findViewById(R.id.editTextNewToDoString);
-        editTextToDoId=(EditText)rootView.findViewById(R.id.editTextToDoId);
-        editTextNewToDo=(EditText)rootView.findViewById(R.id.editTextNewToDo);
-        editTextPlace=(EditText)rootView.findViewById(R.id.editTextPlace);
-        textViewToDos=(TextView)rootView.findViewById(R.id.textViewToDos);
+        editTextNewToDoString = (EditText) rootView.findViewById(R.id.editTextNewToDoString);
+        editTextToDoId = (EditText) rootView.findViewById(R.id.editTextToDoId);
+        editTextNewToDo = (EditText) rootView.findViewById(R.id.editTextNewToDo);
+        editTextPlace = (EditText) rootView.findViewById(R.id.editTextPlace);
+        textViewToDos = (TextView) rootView.findViewById(R.id.textViewToDos);
 
-
-        buttonAddToDo=(Button)rootView.findViewById(R.id.buttonAddToDo);
-        buttonRemoveToDo=(Button)rootView.findViewById(R.id.buttonRemoveToDo);
-        buttonModifyToDo=(Button)rootView.findViewById(R.id.buttonModifyToDo);
-
+        buttonAddToDo = (Button) rootView.findViewById(R.id.buttonAddToDo);
+        buttonRemoveToDo = (Button) rootView.findViewById(R.id.buttonRemoveToDo);
+        buttonModifyToDo = (Button) rootView.findViewById(R.id.buttonModifyToDo);
 
         buttonModifyToDo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,7 +96,7 @@ public class MainActivityViewImplementor implements MVCMainActivityView {
         textViewToDos.setText(toDoList.toString());
     }
 
-    private void clearEditTexts(){
+    private void clearEditTexts() {
         editTextNewToDo.setText("");
         editTextToDoId.setText("");
         editTextNewToDoString.setText("");
@@ -114,8 +105,8 @@ public class MainActivityViewImplementor implements MVCMainActivityView {
 
     @Override
     public void showErrorToast(String errorMessage) {
-        Toast.makeText(rootView.getContext(),errorMessage, Toast.LENGTH_LONG).show();
-        if(errorMessage.equals("Empty To Do List")){
+        Toast.makeText(rootView.getContext(), errorMessage, Toast.LENGTH_LONG).show();
+        if (errorMessage.equals("Empty To Do List")) {
             clearEditTexts();
             textViewToDos.setText("");
         }

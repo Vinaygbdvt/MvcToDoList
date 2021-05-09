@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/DBDemoToDoList.iml" filepath="$PROJECT_DIR$/DBDemoToDoList.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MVC_impl_db_ct.iml" filepath="$PROJECT_DIR$/.idea/modules/MVC_impl_db_ct.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/MVC_impl_db_ct.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/MVC_impl_db_ct.app.iml" />
     </modules>
   </component>
 </project>

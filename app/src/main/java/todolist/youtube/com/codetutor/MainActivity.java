@@ -12,8 +12,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        mvcView = new MainActivityViewImplementor(MainActivity.this,null);
+        mvcView = new MainActivityViewImplementor(MainActivity.this, null);
         setContentView(mvcView.getRootView());
         mvcView.initViews();
     }

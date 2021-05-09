@@ -13,21 +13,20 @@ public class ToDo {
     private String toDo;
     private String place;
 
-    public ToDo(){
+    public ToDo() {
         super();
     }
 
-    public ToDo(long id, String toDo){
-        this.id=id;
-        this.toDo=toDo;
+    public ToDo(long id, String toDo) {
+        this.id = id;
+        this.toDo = toDo;
     }
 
-    public ToDo(long id, String toDo, String place){
-        this.id=id;
-        this.toDo=toDo;
-        this.place=place;
+    public ToDo(long id, String toDo, String place) {
+        this.id = id;
+        this.toDo = toDo;
+        this.place = place;
     }
-
 
     public long getId() {
         return id;
@@ -55,6 +54,6 @@ public class ToDo {
 
     @Override
     public String toString() {
-        return "("+ id+", "+toDo+", "+place+")";
+        return "(" + id + ", " + toDo + ", " + place + ")";
     }
 }
